@@ -4,12 +4,14 @@
 <title>Greetings</title>
 <style type="text/css">  
   body {
+    background: #444;
     background: -webkit-gradient(linear, left top, right bottom, from(#444444), to(#111111));
+    background: -moz-linear-gradient(left top, #444444, #111111);
   }
   #note { 
     position: absolute; 
     width: 300px; 
-    height: 250px; 
+    height: 300px; 
     padding: 20px; 
     border: 0; 
     -webkit-box-shadow: 0px 0px 10px #000; 
@@ -18,6 +20,8 @@
     font-size: 18px;   
     font-family: "museo sans";
     background: #ffa;
+    background: -webkit-gradient(linear, center top, center bottom, from(#fea), to(#fd7));
+    background: -moz-linear-gradient(center top, #fea, #fd7);
   }  
 </style>    
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>                                                
@@ -28,9 +32,12 @@ $(document).ready(function(){
   }
   $("#note").keyup(function(){
     localStorage.noteText = $("#note").val();
-  });    
-  $("#note").css('left', ($(window).width()/2) - ($("#note").width()/2) + "px");
-  $("#note").css('top', ($(window).height()/2) - ($("#note").height()/2) + "px");
+  });                    
+  $(window).resize(function(){
+    $("#note").css('left', ($(window).width()/2) - ($("#note").width()/2) - 20 + "px");
+    $("#note").css('top', ($(window).height()/2) - ($("#note").height()/2) - 20 + "px");    
+  });                                                                                   
+  $(window).resize();
 });
 </script>
 </head>
